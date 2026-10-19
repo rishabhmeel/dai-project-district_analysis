@@ -1,3 +1,5 @@
+## We are using NFHS-5 data which was from the timeline 2019-2020
+
 # District Wealth and Development Indicators in India
 
 **Team 08 | Open Project Proposal**
@@ -29,22 +31,22 @@ The analysis will distinguish **correlation from causation** and consider factor
 
 The project will use publicly available datasets with district-level coverage, subject to availability, reliability, and comparability.
 
-| Dataset / Source | Purpose |
-|---|---|
-| District-level prosperity or wealth index | Main explanatory variable representing economic well-being |
-| National Family Health Survey (NFHS) | Source for district-level health and household indicators |
-| Child health indicators | Measure developmental outcomes related to child health |
-| Health insurance coverage | Examine access to health insurance and financial protection |
-| Additional development indicators | Explore education, sanitation, infrastructure, and basic services where suitable data are available |
+| Dataset / Source                          | Purpose                                                                                             |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| District-level prosperity or wealth index | Main explanatory variable representing economic well-being                                          |
+| National Family Health Survey (NFHS)      | Source for district-level health and household indicators                                           |
+| Child health indicators                   | Measure developmental outcomes related to child health                                              |
+| Health insurance coverage                 | Examine access to health insurance and financial protection                                         |
+| Additional development indicators         | Explore education, sanitation, infrastructure, and basic services where suitable data are available |
 
 ### Research References
 
-1. Subramanya, V., et al. (2025). *Development and validation of a district-level index of socioeconomic development for India.* [DOI](https://doi.org/10.1101/2025.04.02.25325109)
-2. *Progress on Sustainable Development Goal indicators in 707 districts of India: A quantitative mid-line assessment using the National Family Health Surveys, 2016 and 2021* (2023). [Read paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC10306006/)
-3. Gouda, J., Gupta, A. K., and Yadav, A. K. *Association of child health and household amenities in high focus states in India: A district-level analysis.* [DOI](https://doi.org/10.1136/bmjopen-2015-007589)
+1. Subramanya, V., et al. (2025). _Development and validation of a district-level index of socioeconomic development for India._ [DOI](https://doi.org/10.1101/2025.04.02.25325109)
+2. _Progress on Sustainable Development Goal indicators in 707 districts of India: A quantitative mid-line assessment using the National Family Health Surveys, 2016 and 2021_ (2023). [Read paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC10306006/)
+3. Gouda, J., Gupta, A. K., and Yadav, A. K. _Association of child health and household amenities in high focus states in India: A district-level analysis._ [DOI](https://doi.org/10.1136/bmjopen-2015-007589)
 4. National Family Health Survey, NFHS-5. [Official NFHS-5 portal](https://www.nfhsiips.in/nfhsuser/nfhs5.php)
 
-*Note: Dataset selection is preliminary. Final variables and geographical coverage will depend on the availability of comparable district-level data.*
+_Note: Dataset selection is preliminary. Final variables and geographical coverage will depend on the availability of comparable district-level data._
 
 ## Methodology
 
@@ -74,26 +76,26 @@ R and interactive visualization tools such as Tableau, Power BI, Plotly, or Shin
 
 ## Project Workflow
 
-| Stage | Planned Activity |
-|---|---|
-| Project design | Refine the research question and select variables |
-| Data collection | Identify, collect, and document datasets |
-| Data preparation | Clean, standardize, and merge district-level data |
-| Intermediate checkpoint | Review data availability, progress, and challenges |
-| Statistical analysis | Conduct exploratory analysis, correlation, and suitable regression |
-| Results validation | Verify the analysis pipeline and findings |
-| Final deliverables | Prepare the position paper, presentation, and video |
+| Stage                   | Planned Activity                                                   |
+| ----------------------- | ------------------------------------------------------------------ |
+| Project design          | Refine the research question and select variables                  |
+| Data collection         | Identify, collect, and document datasets                           |
+| Data preparation        | Clean, standardize, and merge district-level data                  |
+| Intermediate checkpoint | Review data availability, progress, and challenges                 |
+| Statistical analysis    | Conduct exploratory analysis, correlation, and suitable regression |
+| Results validation      | Verify the analysis pipeline and findings                          |
+| Final deliverables      | Prepare the position paper, presentation, and video                |
 
 The team will collaborate throughout the project, with responsibilities adjusted collectively based on progress and availability.
 
 ## Team Members
 
-| Name | Roll Number |
-|---|---|
-| Rishabh | 25B0931 |
-| Sugam Kumar Thakur | 25B1058 |
-| Aaryan Chavda | 25B1065 |
-| Arshdeep | 25B1082 |
+| Name               | Roll Number |
+| ------------------ | ----------- |
+| Rishabh            | 25B0931     |
+| Sugam Kumar Thakur | 25B1058     |
+| Aaryan Chavda      | 25B1065     |
+| Arshdeep           | 25B1082     |
 
 ## Project Planning
 
