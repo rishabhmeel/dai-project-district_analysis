@@ -1,198 +1,139 @@
-
 # District-Level Multidimensional Poverty and Health in India
 
-**Team 08 | CS215 – Data Analysis and Interpretation**
+**Course:** CS215 – Data Analysis and Interpretation  
+**Group:** 08  
+**Mentor:** Namish Bansal
+
+## Team Members
+
+- Rishabh Meel — 25B0931
+- Sugam Kumar Thakur — 25B1058
+- Aaryan Chavda — 25B1065
+- Arshdeep Singh — 25B1082
 
 ## Overview
 
-This project investigates the relationship between multidimensional poverty and health outcomes across districts in India. Using district-level data from the National Family Health Survey (NFHS-5), collected during 2019–2020, the project examines whether districts experiencing higher levels of multidimensional poverty also tend to experience poorer health outcomes.
+This project investigates the relationship between district-level multidimensional poverty and selected health indicators across India.
 
-The analysis focuses on understanding the strength and direction of associations between the Multidimensional Poverty Index (MPI) and selected health indicators. It also explores differences between districts, identifies potential outliers, and examines whether multidimensional poverty can serve as an indicator of health-related development.
+The **Multidimensional Poverty Index (MPI)** measures poverty through overlapping deprivations in health, education, and living standards, rather than income alone.
 
-## Research Question
+**Research question:** How strongly, and in what direction, is MPI associated with health outcomes across Indian districts, and which indicators show the strongest associations?
 
-How strongly is district-level multidimensional poverty associated with health indicators across districts in India, and which health indicators show the strongest relationship with MPI?
+The analysis is exploratory and observational. It describes statistical associations and does not establish causal effects.
 
-## Research Objectives
+## Data
 
-- Examine the association between district-level MPI and selected health indicators.
-- Quantify the strength and direction of relationships using statistical measures.
-- Compare linear and rank-based correlations to identify potential nonlinear or monotonic relationships.
-- Investigate differences in health outcomes among districts with similar levels of multidimensional poverty.
-- Identify outlier districts and explore possible explanations for their outcomes.
-- Evaluate the limitations of using MPI as a standalone measure of health-related development.
+The project combines district-level MPI data with health indicators from the National Family Health Survey (NFHS-5), collected during 2019–2021. The merged dataset contains **707 districts** and eight health indicators:
 
-## Research Hypothesis
+- Improved sanitation
+- Menstrual hygiene
+- Full vaccination
+- Adequate diet among children aged 6–23 months
+- Anaemia among women aged 15–49
+- High blood sugar among men
+- Tobacco use among women
+- Alcohol use among men
 
-The primary hypothesis is that districts with higher multidimensional poverty tend to experience poorer health outcomes.
+Health indicators are expressed as percentages.
 
-However, the strength of this relationship may vary across health indicators. Some indicators may show a stronger association with MPI than others, reflecting differences in healthcare access, living conditions, and other socioeconomic factors.
+## Repository Structure
 
-The analysis will distinguish correlation from causation and acknowledge the influence of factors such as population characteristics, urbanization, and regional differences.
-
-## Data Sources
-
-The project uses district-level data from the following sources:
-
-| Dataset | Purpose |
-|---|---|
-| National Family Health Survey – NFHS-5 | Source of district-level health and household indicators |
-| Multidimensional Poverty Index (MPI) | Main explanatory variable representing multidimensional poverty |
-
-The analysis uses NFHS-5 data collected during 2019–2020. The selected variables are based on the availability of comparable district-level observations.
+```text
+.
+├── data/
+│   ├── clean/
+│   │   └── MPI vs Health Indicators.xlsx
+│   └── raw/
+│       ├── datasheet.xls
+│       └── india_district_mpi_nfhs4_nfhs5.xlsx
+├── CS215_MPI_Health_Analysis...  # Main analysis notebook
+├── data_loading.ipynb            # Data preparation and merging
+├── ENVIRONMENT.md
+├── README.md
+└── requirements.txt
+```
 
 ## Methodology
 
-The project follows a data-driven analytical workflow.
+### Data preparation
 
-### 1. Data Collection and Preparation
+The `data_loading.ipynb` notebook:
 
-- Obtain the district-level MPI and health indicator datasets.
-- Inspect the datasets for missing values, duplicates, and inconsistencies.
-- Standardize district identifiers and verify the compatibility of district names.
-- Merge the datasets using appropriate district identifiers.
-- Examine the completeness and comparability of the merged dataset.
+1. Loads the raw health-indicator and MPI spreadsheets.
+2. Selects the eight health indicators and district identifiers.
+3. Standardizes district and state names, accounting for spelling differences and renamed districts.
+4. Handles specially encoded values: suppressed values are treated as missing, and parenthesized negative estimates are converted to positive percentages.
+5. Merges the datasets and saves the cleaned file to `data/clean/MPI vs Health Indicators.xlsx`.
 
-### 2. Exploratory Data Analysis
+Missing values are not imputed. Analyses use the available observations for each pair of variables.
 
-- Examine the distributions of MPI and selected health indicators.
-- Calculate descriptive statistics, including mean, median, standard deviation, minimum, and maximum.
-- Identify unusual observations and potential outlier districts.
-- Use visualizations to examine variation across districts.
+### Analysis
 
-### 3. Correlation Analysis
+The main notebook uses descriptive statistics, visualizations, Pearson and Spearman correlations, and simple linear regression. It also plots the MPI distribution and visualizes the strongest negative associations with fitted trendlines.
 
-The project uses two correlation measures:
+## Key Findings
 
-- **Pearson correlation coefficient (r):** Measures the strength and direction of a linear relationship between MPI and a health indicator.
-- **Spearman rank correlation coefficient (ρ):** Measures the strength and direction of a monotonic relationship using ranked observations.
+- MPI has a mean of **0.065** and a median of **0.053**. Its distribution is concentrated at lower values, with a right tail toward higher deprivation.
+- Menstrual hygiene has the strongest negative Pearson correlation with MPI (**r = −0.748**), followed by improved sanitation (**r = −0.656**).
+- Full vaccination (**r = −0.324**), high blood sugar among men (**r = −0.314**), and adequate diet (**r = −0.179**) have weaker negative correlations.
+- Anaemia among women (**r = 0.242**) and tobacco use among women (**r = 0.222**) have modest positive correlations.
+- Alcohol use among men has little observed linear association with MPI (**r = −0.025**, p = 0.511).
 
-The two measures are compared to assess whether the observed relationships are approximately linear or whether rank-based associations provide additional insights.
+The fitted regressions estimate that a 0.1 increase in MPI is associated with a decrease of approximately **20.464 percentage points in menstrual hygiene** and **16.835 percentage points in improved sanitation**. These describe observed district-level relationships and should not be interpreted as causal effects.
 
-### 4. Regression Analysis
+## Tools and Libraries
 
-Simple linear regression is used to examine the relationship between MPI and individual health indicators.
+- Python
+- Jupyter Notebook
+- pandas
+- NumPy
+- Matplotlib
+- SciPy
 
-Regression results are interpreted in terms of the estimated association, direction of the relationship, and proportion of variation explained by the model.
+## Setup and Usage
 
-### 5. Interpretation and Conclusion
-
-The results are interpreted in the context of multidimensional poverty and health-related development.
-
-The analysis discusses the strength of the observed relationships, potential outlier districts, and limitations of drawing conclusions from district-level observational data.
-
-## Tools and Technologies
-
-The project uses the following tools:
-
-- **Python** for data analysis and scripting
-- **Jupyter Notebook** for interactive analysis and documentation
-- **pandas** and **NumPy** for data manipulation
-- **Matplotlib** for data visualization
-- **SciPy** for statistical analysis
-- **Git and GitHub** for version control and collaboration
-
-## Project Structure
-
-```text
-district-wealth-development/
-├── data/
-│   ├── raw/
-│   └── clean/
-├── notebooks/
-│   └── CS215_MPI_Health_Analysis.ipynb
-├── CHATS.md
-├── reports/
-├── requirements.txt
-└── README.md
-```
-
-This structure may be updated as the project develops. Raw datasets may be excluded from version control where licensing, file size, or redistribution restrictions apply.
-
-## Requirements and Setup
-
-The project requires Python and the packages listed in `requirements.txt`. The notebook also uses SciPy for correlation and regression calculations, so ensure that `scipy` is included in the requirements file.
-
-### 1. Clone the repository
+Clone the repository and move into its directory:
 
 ```bash
 git clone <repository-url>
 cd <repository-folder>
 ```
 
-### 2. Create and activate a virtual environment
+Create and activate a virtual environment:
 
 ```bash
-python -m venv .venv
-```
-
-On macOS or Linux:
-
-```bash
+python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-On Windows:
+Install the required packages:
 
 ```bash
-.venv\Scripts\activate
-```
-
-### 3. Install the dependencies
-
-```bash
-python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-
-### 4. Launch the notebook
+Launch Jupyter Notebook:
 
 ```bash
 jupyter notebook
 ```
 
-Open `notebooks/CS215_MPI_Health_Analysis.ipynb` and run the cells.
-
-The notebook expects the cleaned dataset to be available at:
+Run `data_loading.ipynb` to prepare the cleaned dataset, then run the main analysis notebook. The cleaned spreadsheet should be available at:
 
 ```text
 data/clean/MPI vs Health Indicators.xlsx
 ```
 
-## Limitations and Challenges
+## Limitations
 
-The project acknowledges the following limitations:
+- The analysis is observational and aggregated by district; it cannot establish causality or individual-level relationships.
+- District averages may hide substantial variation within districts.
+- Other regional, demographic, and socioeconomic factors may influence both MPI and health outcomes.
+- Sanitation is also represented within MPI, so its association with MPI may partly reflect conceptual overlap.
+- The data describe a specific survey period and may not represent current conditions.
 
-- The analysis is based on district-level data and may not reflect individual-level relationships.
-- The findings are observational and do not establish causal relationships.
-- The availability and completeness of district-level observations may vary across indicators.
-- Differences in district characteristics, population composition, and regional conditions may influence the observed relationships.
-- MPI and certain health-related indicators may share underlying dimensions, potentially affecting the strength of their association.
-- The analysis uses NFHS-5 data collected during 2019–2020 and does not establish how these relationships have changed over time.
+## Conclusion
 
-## Expected Outcomes
+District MPI is most strongly negatively associated with menstrual hygiene and improved sanitation. Associations with vaccination, high blood sugar among men, and adequate diet are weaker. Anaemia and tobacco use among women show positive associations, while alcohol use among men has little observed association.
 
-The project aims to produce:
-
-- A cleaned and integrated district-level dataset.
-- Descriptive statistics for MPI and selected health indicators.
-- Visualizations illustrating the relationships between MPI and health indicators.
-- Pearson and Spearman correlation estimates.
-- Regression results for individual health indicators.
-- Identification and discussion of outlier districts.
-- A conclusion assessing the association between multidimensional poverty and health-related development.
-
-These outcomes represent the objectives of the analysis and do not imply any predetermined findings.
-
-## Research Principle
-
-The project prioritizes transparent data sources, reproducible analysis, and careful statistical interpretation. Conclusions will be limited to what the available data and methods support.
-
----
-
-**Project:** District-Level Multidimensional Poverty and Health in India  
-**Course:** CS215 – Data Analysis and Interpretation  
-**Team:** 08  
-**Data Source:** NFHS-5 (2019–2020)  
-**Status:** Data analysis and interpretation
+Overall, the project describes how MPI and selected health indicators vary together across districts; it does not establish causal relationships.
