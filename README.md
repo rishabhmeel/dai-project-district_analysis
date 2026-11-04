@@ -50,7 +50,11 @@ Health indicators are expressed as percentages.
 ├── data_loading.ipynb            # Data preparation and merging
 ├── ENVIRONMENT.md
 ├── README.md
+├── DAI_Project_Submission.mp4
+├── dai_project_slides.pdf
+├── 08.pdf
 └── requirements.txt
+
 ```
 
 ## Methodology
